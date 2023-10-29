@@ -4,3 +4,9 @@ npm init -y
 npx express-generator --view=hbsy
 npm install nodemon
 nodemon bin/www
+
+Designing index.hbs
+Chrome => Bootstrap starter template => https://getbootstrap.com/docs/4.0/getting-started/introduction/ => Paste in index.hbs
+Chrome => Bootstrap navbar => Paste inside header which is inside body in index.hbs
+Removing styles(public/stylesheets/style.css)
+Listing dummy products => Bootstrap cards => cards inside div(section(body)) => Four cards in a row(class="col-md-3")
