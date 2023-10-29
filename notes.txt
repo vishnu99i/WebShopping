@@ -1,0 +1,6 @@
+mkdir WebShopping
+cd WebShopping
+npm init -y
+npx express-generator --view=hbsy
+npm install nodemon
+nodemon bin/www
