@@ -31,6 +31,13 @@ router.get('/', function(req, res, next) {
   ]
 
   res.render('admin/viewproducts',{admin:true,products});
+
+  //To get add product page
+  router.get('/addproduct',function(req,res){
+      //To render the page
+      res.render('admin/addproduct')
+  })
+
 });
 
 module.exports = router;
