@@ -30,3 +30,11 @@ setting up views/layout/layout.hbs
 headers into partials => {{>adminheader}} in layout.hbs
 headers into partials => {{>userheader}} in layout.hbs
 To differentiate between user and admin => index.js => res.render('index', {products,admin:true});
+
+index.js for users and admin.js for admin
+
+adminheader and userheader edited
+Set admin status for admin.js and users.js
+
+Set user and admin file in views
+Creating vieewproducts.hbs in views/admin and add bootstrap table
