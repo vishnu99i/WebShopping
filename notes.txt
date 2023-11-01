@@ -6,8 +6,27 @@ npm install nodemon
 nodemon bin/www
 
 Designing index.hbs
+
 Chrome => Bootstrap starter template => https://getbootstrap.com/docs/4.0/getting-started/introduction/ => Paste in index.hbs
+
 Chrome => Bootstrap navbar => Paste inside header which is inside body in index.hbs
+
 Removing styles(public/stylesheets/style.css)
+
 Listing dummy products => Bootstrap cards => cards inside div(section(body)) => Four cards in a row(class="col-md-3")
+
 Passing array of products => index.js => Using array of products in index.hbs({{this.name}})
+
+Layout setting => views/layout/layout.hbs
+
+Different settings users and admin => views/partials/adminheader or userheader
+
+Default set up
+Engine set up => app.js => app.engine('hbs',hbs.engine({extname: 'hbs',defaultLayout:'layout',layoutsDir:__dirname+'/views/layout/',partialsDir:__dirname+'/views/partials/'}));
+In app.js => npm install express-handlebars
+
+setting up views/layout/layout.hbs
+
+headers into partials => {{>adminheader}} in layout.hbs
+headers into partials => {{>userheader}} in layout.hbs
+To differentiate between user and admin => index.js => res.render('index', {products,admin:true});
