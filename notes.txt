@@ -38,3 +38,13 @@ Set admin status for admin.js and users.js
 
 Set user and admin file in views
 Creating vieewproducts.hbs in views/admin and add bootstrap table
+
+Add product form
+Enoding type for file uploading
+<form action="/admin/addproduct" method="post" enctype="multipart/form-data">
+
+For file upload from add product form
+npm install express-fileupload
+app.js => var fileUpload = require('express-fileupload');
+Adding middleware for express-fileupload
+app.use(fileUpload());

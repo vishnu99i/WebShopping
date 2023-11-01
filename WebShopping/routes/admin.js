@@ -38,6 +38,12 @@ router.get('/', function(req, res, next) {
       res.render('admin/addproduct')
   })
 
+  //Method post and database connections
+  router.post('/addproduct',(req,res) => {
+    console.log(req.body);
+    console.log(req.files.image);
+  })
+
 });
 
 module.exports = router;
