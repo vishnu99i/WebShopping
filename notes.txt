@@ -60,3 +60,9 @@ Server started and database connection established
 get is used to get state.db
 
 req.body contains form from user
+
+getAllProducts from data base => producthelpers.js
+Promise
+config/collections.js
+
+Chrome => Robo mongo
