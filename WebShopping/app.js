@@ -15,6 +15,9 @@ var app = express();
 //For file upload from add product form
 var fileUpload = require('express-fileupload');
 
+//Database connection
+var db = require('./config/connection')
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -30,6 +33,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Admin middleware for express-fileupload
 app.use(fileUpload());
+
+//Calling database connection
+db.connect((err) => {
+  if(err)
+  console.log("Connection Error" + err);
+  else
+  console.log("Database Connected to port 27017");
+});
 
 app.use('/', userRouter);
 app.use('/admin', adminRouter);

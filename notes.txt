@@ -48,3 +48,5 @@ npm install express-fileupload
 app.js => var fileUpload = require('express-fileupload');
 Adding middleware for express-fileupload
 app.use(fileUpload());
+
+Created config folder for database configuration
