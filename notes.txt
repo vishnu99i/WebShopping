@@ -50,3 +50,13 @@ Adding middleware for express-fileupload
 app.use(fileUpload());
 
 Created config folder for database configuration
+
+helpers file created
+
+ops array => producthelpers.js
+
+app.js
+Server started and database connection established
+get is used to get state.db
+
+req.body contains form from user
