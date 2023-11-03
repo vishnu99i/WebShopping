@@ -2,6 +2,15 @@ var express = require('express');
 var router = express.Router();
 const productHelpers = require('../helpers/producthelpers')
 const userHelpers = require('../helpers/userhelpers')
+//Middleware to check user is logged in or not
+const verifyLogin = (req,res,next) => {
+  if(req.session.loggedIn){
+    next()
+  }
+  else{
+    res.redirect('/login')
+  }
+}
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -60,6 +69,10 @@ router.post('/login',(req,res) => {
 router.get('/logout',(req,res) => {
   req.session.destroy()
   res.redirect('/')
+})
+
+router.get('/cart',verifyLogin,(req,res) => {
+  res.render('user/cart')
 })
 
 module.exports = router;
