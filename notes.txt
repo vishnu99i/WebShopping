@@ -66,3 +66,5 @@ Promise
 config/collections.js
 
 Chrome => Robo mongo
+
+Dropdowns bootstrap => login => login user.js => router.get()
