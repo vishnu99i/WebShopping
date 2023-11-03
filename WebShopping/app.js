@@ -18,6 +18,8 @@ var fileUpload = require('express-fileupload');
 //Database connection
 var db = require('./config/connection')
 
+var session = require('express-session')
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -33,6 +35,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Admin middleware for express-fileupload
 app.use(fileUpload());
+
+app.use(session({secret: "key",cookie:{maxAge: 600000}}))
 
 //Calling database connection
 db.connect((err) => {

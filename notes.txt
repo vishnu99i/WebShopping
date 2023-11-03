@@ -71,3 +71,9 @@ Dropdowns bootstrap => login => login user.js => router.get()
 
 users.js => Use signup data to database and the password will be in encrypted format(oneway functions)
 npm install bcrypt
+
+Sessions and cookies(cookie ID)
+Express session library
+npm i express-session
+app.js
+Session stored in server and cookie stored in browser
