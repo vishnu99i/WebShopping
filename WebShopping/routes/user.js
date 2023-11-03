@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const productHelpers = require('../helpers/producthelpers')
+const userHelpers = require('../helpers/userhelpers')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -19,6 +20,13 @@ router.get('/login',(req,res) => {
 //User signup
 router.get('/signup',(req,res) => {
   res.render('user/signup')
+})
+
+//Use signup data to database and the password will be in encrypted format
+router.post('/signup',(req,res) => {
+  userHelpers.doSignup(req.body).then((response) => {
+    console.log(response);
+  })
 })
 
 module.exports = router;

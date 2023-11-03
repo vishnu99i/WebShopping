@@ -68,3 +68,6 @@ config/collections.js
 Chrome => Robo mongo
 
 Dropdowns bootstrap => login => login user.js => router.get()
+
+users.js => Use signup data to database and the password will be in encrypted format(oneway functions)
+npm install bcrypt
