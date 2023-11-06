@@ -60,4 +60,11 @@ router.get('/', function(req, res, next) {
     res.render('admin/editproduct',{product})//Passing product to the page
   })
 
+  router.post('/editproduct/:id',(req,res) => {
+    console.log(req.params.id)
+    productHelpers.updateProduct(req.params.id,req.body).then(() => {
+      res.redirect('/admin')
+    })
+  })
+
 module.exports = router;
