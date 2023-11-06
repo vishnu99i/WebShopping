@@ -86,3 +86,5 @@ Cart
 admin/editproduct.hbs
 
 "id" used in "img" tag and "onchange" in "input" tag for checking live image update
+
+session created for signup => user.js
