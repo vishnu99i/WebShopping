@@ -84,3 +84,5 @@ Then check login status
 Cart
 
 admin/editproduct.hbs
+
+"id" used in "img" tag and "onchange" in "input" tag for checking live image update
