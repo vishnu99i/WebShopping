@@ -90,3 +90,5 @@ admin/editproduct.hbs
 session created for signup => user.js
 
 Add to cart
+
+Bootstrap notification icon with count(Badges)

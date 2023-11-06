@@ -13,15 +13,20 @@ const verifyLogin = (req,res,next) => {
 }
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
 
   //To check user login status
   let user = req.session.user
   console.log(user)
 
+  let cartCount = null
+  if(req.session.user){
+  cartCount = await userHelpers.getCartCount(req.session.user._id)
+  }
+
   productHelpers.getAllProducts().then((products) => {
     console.log(products);
-    res.render('user/viewproducts',{products,user});
+    res.render('user/viewproducts',{products,user,cartCount});
   }) 
 });
 
