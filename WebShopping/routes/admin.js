@@ -54,4 +54,10 @@ router.get('/', function(req, res, next) {
       })
   })
 
+  router.get('/editproduct/:id',async(req,res) => {
+    let product = await productHelpers.getProductDetails(req.params.id)
+    console.log(product)
+    res.render('admin/editproduct',{product})//Passing product to the page
+  })
+
 module.exports = router;
