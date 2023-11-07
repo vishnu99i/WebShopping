@@ -95,4 +95,11 @@ router.get('/addtocart/:id',(req,res) => {
   })
 })
 
+router.post('/changeproductquantity',(req,res,next) => {
+  console.log(req.body)
+  userHelpers.changeProductQuantity(req.body).then(() => {
+    
+  })
+})
+
 module.exports = router;
