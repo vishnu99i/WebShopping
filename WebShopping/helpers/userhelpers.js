@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 var objectId = require('mongodb').ObjectID
 
 module.exports = {
+
    doSignup: (userData) => {
       return new Promise(async(resolve,reject) => {
          userData.Password = await bcrypt.hash(userData.Password,10)
@@ -12,6 +13,7 @@ module.exports = {
          })
       })
    },
+
    doLogin:(userData) => {
       return new Promise(async(resolve,reject) => {
          let loginStatus = false
@@ -37,6 +39,7 @@ module.exports = {
          }
       })
    },
+
    addToCart: (proId,userId) => {
 
       let proObj = {
@@ -84,6 +87,7 @@ module.exports = {
          }
       })
    },
+
    getCartProducts:(userId) => {
       return new Promise(async(resolve,reject) => {
          let cartItems = await db.get().collection(collection.CART_COLLECTION).aggregate([
@@ -115,32 +119,13 @@ module.exports = {
                   product:{$arrayElemAt:['$product',0]}
                }
             }
-            /*
-            {
-               $lookup:{
-                  from:collection.PRODUCT_COLLECTION,
-                  //Database variable $products
-                  let:{proList:'$products'},
-                  pipeline:[
-                     {
-                        $match:{
-                           $expr:{
-                              $in:['$_id',"$$proList"]
-                           }
-                        }
-                     }
-                  ],
-                  as:'cartItems'
-               }
-            }
-            */
 
          ]).toArray()
-         console.log(cartItems[0].products)
          console.log(cartItems)
          resolve(cartItems)
       })
    },
+
    getCartCount:(userId) => {
       return new Promise(async(resolve,reject) => {
          let count = 0
@@ -151,20 +136,35 @@ module.exports = {
          resolve(count)
       })
    },
+
    changeProductQuantity:(details) => {
 
       details.count = parseInt(details.count)
+      details.quantity = parseInt(details.quantity)
 
       return new Promise((resolve,reject) => {
-         db.get().collection(collection.CART_COLLECTION)
-               .updateOne({_id:objectId(details.cart),'products.item' : objectId(details.product)},
+
+         if(details.count==-1 && details.quantity==1){
+            db.get().collection(collection.CART_COLLECTION)
+               .updateOne({_id:objectId(details.cart)},//ID matching
                {
-                  $inc:{'products.$.quantity':details.count}//For an array $ symbol is used to change an element in an array
+                  $pull:{products:{item:objectId(details.product)}}
                }
                ).then((response) => {
-                  resolve()
+                  resolve({removeProduct:true})
                })
+         }
+         else{
+            db.get().collection(collection.CART_COLLECTION)
+                  .updateOne({_id:objectId(details.cart),'products.item' : objectId(details.product)},
+                  {
+                     $inc:{'products.$.quantity':details.count}//For an array $ symbol is used to change an element in an array
+                  }
+                  ).then((response) => {
+                     resolve(true)
+                  })
+         }
       })
    }
 
-}
+   }

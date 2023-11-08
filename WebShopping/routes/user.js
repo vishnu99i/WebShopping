@@ -95,10 +95,10 @@ router.get('/addtocart/:id',(req,res) => {
   })
 })
 
-router.post('/changeproductquantity',(req,res,next) => {
+router.post('/change-product-quantity',(req,res,next) => {
   console.log(req.body)
-  userHelpers.changeProductQuantity(req.body).then(() => {
-    
+  userHelpers.changeProductQuantity(req.body).then((response) => {
+    res.json(response)
   })
 })
 
